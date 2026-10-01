@@ -21,6 +21,17 @@ const boutonCle = document.querySelector("#btnCle");
 const boutonChapeau = document.querySelector("#btnChapeau");
 const boutonBoss = document.querySelector("#btnBoss");
 
+const boutonOngletMonstres = document.querySelector("#btnOngletMonstres");
+const boutonOngletBoss = document.querySelector("#btnOngletBoss");
+const ongletMonstres = document.querySelector("#ongletMonstres");
+const ongletBoss = document.querySelector("#ongletBoss");
+
+const popupMarchand = document.querySelector("#popupMarchand");
+const boutonOuvrirMarchand = document.querySelector("#btnOuvrirMarchand");
+const boutonFermerMarchand = document.querySelector("#btnFermerMarchand");
+
+const fichePersonnage = document.querySelector("#fichePersonnage");
+
 function afficherPersonnage() {
     document.querySelector("#nomPersonnage").textContent = nom;
     document.querySelector("#classePersonnage").textContent = classe;
@@ -30,14 +41,20 @@ function afficherPersonnage() {
     document.querySelector("#piecePersonnage").textContent = piecesOr;
     document.querySelector("#clePersonnage").textContent = possedeCle ? "Oui" : "Non";
     document.querySelector("#chapeauPersonnage").textContent = possedeChapeau ? "Oui" : "Non";
+    document.querySelector("#piecesMarchand").textContent = piecesOr;
+
+    boutonCle.disabled = possedeCle;
+    boutonChapeau.disabled = possedeChapeau;
+
+    fichePersonnage.className = classe.toLowerCase();
 }
 
 function verifierPersonnage() {
     if (typeof (nom) !== "string" || typeof (force) !== "number" || typeof (magie) !== "number" || typeof (piecesOr) !== "number") {
-        afficherMessage("Donnees du personnage non valides");
+        afficherMessage("Données du personnage non valides");
         return;
     } else if (force > 10 || force < 0 || piecesOr < 0) {
-        afficherMessage("Specs non valides");
+        afficherMessage("Statistiques non valides");
         return;
     }
 }
@@ -94,7 +111,7 @@ function acheterObjet(objet) {
     }
     if (objet === "cle") {
         if (possedeCle === true) {
-            afficherMessage("Vous possedez deja une clé !");
+            afficherMessage("Vous possédez déjà une clé !");
             return;
         }
         if (piecesOr >= cle) {
@@ -107,7 +124,7 @@ function acheterObjet(objet) {
     }
     if (objet === "chapeau") {
         if (possedeChapeau === true) {
-            afficherMessage("Vous possedez deja un chapeau !");
+            afficherMessage("Vous possédez déjà un chapeau !");
             return;
         }
         if (piecesOr >= chapeau) {
@@ -122,11 +139,11 @@ function acheterObjet(objet) {
 
 function battreBoss() {
     if (possedeCle === false) {
-        afficherMessage("Vous etes pas pret a battre le boss, vous n'avez pas la clé !");
+        afficherMessage("Vous n'êtes pas prêt à affronter le boss, il vous faut la clé !");
         return;
     }
     if (niveau < 20) {
-        afficherMessage("Vous etes pas pret a battre le boss, votre niveau est inferieur a 20 !");
+        afficherMessage("Vous n'êtes pas prêt à affronter le boss, votre niveau est inférieur à 20 !");
         return;
     }
     afficherMessage("Vous avez battu le boss !");
@@ -140,7 +157,6 @@ function afficherMessage(message) {
 
 boutonFantome.addEventListener("click", function () {
     battreAdversaire("fantome");
-
     afficherPersonnage();
 });
 
@@ -167,6 +183,28 @@ boutonChapeau.addEventListener("click", function () {
 boutonBoss.addEventListener("click", function () {
     battreBoss();
     afficherPersonnage();
+});
+
+boutonOngletMonstres.addEventListener("click", function () {
+    ongletMonstres.hidden = false;
+    ongletBoss.hidden = true;
+    boutonOngletMonstres.classList.add("actif");
+    boutonOngletBoss.classList.remove("actif");
+});
+
+boutonOngletBoss.addEventListener("click", function () {
+    ongletMonstres.hidden = true;
+    ongletBoss.hidden = false;
+    boutonOngletBoss.classList.add("actif");
+    boutonOngletMonstres.classList.remove("actif");
+});
+
+boutonOuvrirMarchand.addEventListener("click", function () {
+    popupMarchand.showModal();
+});
+
+boutonFermerMarchand.addEventListener("click", function () {
+    popupMarchand.close();
 });
 
 verifierPersonnage();

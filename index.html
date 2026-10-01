@@ -5,40 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPG Quêtes</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>RPG Quêtes</h1>
     <section id="fichePersonnage">
         <h2>Fiche de personnage</h2>
+        <img id="portrait" src="images/bob.svg" alt="Bob">
         <p>Nom : <span id="nomPersonnage"></span></p>
         <p>Classe : <span id="classePersonnage"></span></p>
         <p>Niveau : <span id="niveauPersonnage"></span></p>
         <p>Magie : <span id="magiePersonnage"></span></p>
         <p>Force : <span id="forcePersonnage"></span></p>
-        <p>Pieces d'or : <span id="piecePersonnage"></span></p>
+        <p>Pièces d'or : <span id="piecePersonnage"></span></p>
         <p>Clé : <span id="clePersonnage"></span></p>
         <p>Chapeau : <span id="chapeauPersonnage"></span></p>
     </section>
     <section id="combats">
         <h2>Combats</h2>
-        <button id="btnLoup">Loup</button>
-        <button id="btnFantome">Fantome</button>
-        <button id="btnPaladin">Paladin</button>
+        <button id="btnOngletMonstres" class="onglet actif">Monstres</button>
+        <button id="btnOngletBoss" class="onglet">Boss</button>
+        <div id="ongletMonstres">
+            <button id="btnLoup"><img src="images/loup.svg" alt=""> Loup</button>
+            <button id="btnFantome"><img src="images/fantome.svg" alt=""> Fantôme</button>
+            <button id="btnPaladin"><img src="images/paladin.svg" alt=""> Paladin</button>
+        </div>
+        <div id="ongletBoss" hidden>
+            <img id="imageBoss" src="images/boss.svg" alt="Le boss">
+            <button id="btnBoss">Affronter</button>
+        </div>
     </section>
-    <section id="marchand">
-        <h2>Marchand</h2>
-        <button id="btnCle">Clé</button>
-        <button id="btnChapeau">Chapeau</button>
-    </section>
-    <section id="boss">
-        <h2>Boss</h2>
-        <button id="btnBoss">Boss</button>
+    <section id="actions">
+        <h2>Actions</h2>
+        <button id="btnOuvrirMarchand">Ouvrir le marchand</button>
     </section>
     <section id="messages">
         <h2>Messages</h2>
         <p id="message"></p>
     </section>
+    <dialog id="popupMarchand">
+        <h2>Marchand</h2>
+        <p>Pièces d'or : <span id="piecesMarchand"></span></p>
+        <button id="btnCle"><img src="images/cle.svg" alt=""> Clé (3 pièces)</button>
+        <button id="btnChapeau"><img src="images/chapeau.svg" alt=""> Chapeau (5 pièces)</button>
+        <button id="btnFermerMarchand">Fermer</button>
+    </dialog>
 <script src="./script.js"></script>
 </body>
 </html>

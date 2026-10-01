@@ -1,11 +1,9 @@
+/* police pixel avec googleapis */
 @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap");
-
-html {
-    background-color: #0b0b16;
-}
 
 body {
     font-family: "Pixelify Sans", monospace;
+    background-color: #111118;
     color: #fff;
     margin: 0;
     padding: 20px;
@@ -13,25 +11,22 @@ body {
     box-sizing: border-box;
 
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr 150px;
+    grid-template-columns: 1.2fr 1.5fr 1fr; 
+    grid-template-rows: auto 1fr 150px; 
     gap: 16px;
 }
 
 h1 {
-    grid-column: span 4;
+    grid-column: span 3;
     margin: 0;
-    font-size: 40px;
+    font-size: 36px;
     color: #ffd84a;
-    text-shadow: 3px 3px 0 #000;
 }
 
-/* cases */
 section {
-    background: linear-gradient(#2c3a9e, #141c5c);
+    background-color: #1e1e2e;
     border: 3px solid #fff;
     border-radius: 8px;
-    box-shadow: 0 0 0 3px #000;
     padding: 18px 20px;
 }
 
@@ -41,21 +36,39 @@ h2 {
     margin: 0 0 14px;
 }
 
-/* fiche perso */
+/* rendu image pixel sinon floues */
+img {
+    image-rendering: pixelated;
+}
+
+/* fiche personnage */
+#portrait {
+    display: block;
+    width: 72px;
+    margin: 0 auto 6px; 
+}
+
 #fichePersonnage p {
     display: flex;
     justify-content: space-between;
     margin: 0;
-    padding: 7px 0;
+    padding: 5px 0;
     font-size: 18px;
-    color: #c9d0ff;
+    color: #aaa;
 }
 
 #fichePersonnage span {
     color: #fff;
 }
 
-/* boutons */
+#fichePersonnage.guerrier {
+    border-color: #e04848;
+}
+
+#fichePersonnage.mage {
+    border-color: #6c8cff;
+}
+
 button {
     display: block;
     width: 100%;
@@ -69,34 +82,86 @@ button {
     cursor: pointer;
 }
 
+button img {
+    width: 32px;
+    vertical-align: middle;
+}
+
+/* fleche hover bouton */
 button::before {
     content: "▶ ";
     color: #ffd84a;
-    visibility: hidden;
+    visibility: hidden; 
 }
 
-button:hover {
+button:enabled:hover {
     color: #ffd84a;
 }
 
-button:hover::before {
+button:enabled:hover::before {
     visibility: visible;
 }
 
-/* boss */
-#boss {
-    background: linear-gradient(#8a1f2b, #3d0b12);
+button:disabled {
+    color: #555;
+    cursor: not-allowed;
 }
 
-/* messages */
+.onglet {
+    display: inline-block;
+    width: auto;
+    font-size: 18px;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+    border-bottom: 3px solid transparent;
+}
+
+.onglet::before {
+    content: none; 
+}
+
+.onglet.actif {
+    color: #ffd84a;
+    border-bottom-color: #ffd84a;
+}
+
+#ongletBoss {
+    background-color: #5a1420;
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+}
+
+#imageBoss {
+    width: 120px;
+}
+
+#btnBoss {
+    text-align: center;
+    font-size: 24px;
+}
+
+dialog {
+    font-family: inherit;
+    background-color: #1e1e2e;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    width: 320px;
+}
+
+#btnFermerMarchand {
+    margin-top: 10px;
+    color: #aaa;
+}
+
 #messages {
-    grid-column: span 4;
-    position: relative;
-    background: #000;
+    grid-column: span 3;
+    background-color: #000;
 }
 
 #message {
     margin: 0;
     font-size: 22px;
 }
-

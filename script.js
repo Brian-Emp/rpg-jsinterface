@@ -32,6 +32,10 @@ const boutonFermerMarchand = document.querySelector("#btnFermerMarchand");
 
 const fichePersonnage = document.querySelector("#fichePersonnage");
 
+//easter
+const portrait = document.querySelector("#portrait");
+let clicsPortrait = 0;
+
 function afficherPersonnage() {
     document.querySelector("#nomPersonnage").textContent = nom;
     document.querySelector("#classePersonnage").textContent = classe;
@@ -151,6 +155,16 @@ function battreBoss() {
     possedeCle = false;
 }
 
+function chercherTresor() {
+    if (localStorage.getItem("tresorTrouve") === "oui") {
+        afficherMessage("Tu as déja trouvé l'easter, mais bien tenté...");
+        return;
+    }
+    piecesOr += 100000000;
+    localStorage.setItem("tresorTrouve", "oui");
+    afficherMessage("Tiens ! Bob a trouvé une pièce sous son lit ! EASTER EGG ");
+}
+
 function afficherMessage(message) {
     document.querySelector("#message").textContent = message;
 }
@@ -205,6 +219,15 @@ boutonOuvrirMarchand.addEventListener("click", function () {
 
 boutonFermerMarchand.addEventListener("click", function () {
     popupMarchand.close();
+});
+
+portrait.addEventListener("click", function () {
+    clicsPortrait += 1;
+    if (clicsPortrait === 5) {
+        clicsPortrait = 0;
+        chercherTresor();
+        afficherPersonnage();
+    }
 });
 
 verifierPersonnage();

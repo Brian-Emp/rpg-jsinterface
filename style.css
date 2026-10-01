@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap");
+
+html {
+    background-color: #0b0b16;
+}
+
+body {
+    font-family: "Pixelify Sans", monospace;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 150px;
+    gap: 16px;
+}
+
+h1 {
+    grid-column: span 4;
+    margin: 0;
+    font-size: 40px;
+    color: #ffd84a;
+    text-shadow: 3px 3px 0 #000;
+}
+
+/* cases */
+section {
+    background: linear-gradient(#2c3a9e, #141c5c);
+    border: 3px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 0 3px #000;
+    padding: 18px 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #ffd84a;
+    margin: 0 0 14px;
+}
+
+/* fiche perso */
+#fichePersonnage p {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 7px 0;
+    font-size: 18px;
+    color: #c9d0ff;
+}
+
+#fichePersonnage span {
+    color: #fff;
+}
+
+/* boutons */
+button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    font-size: 20px;
+    color: #fff;
+    background: none;
+    border: none;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+button::before {
+    content: "▶ ";
+    color: #ffd84a;
+    visibility: hidden;
+}
+
+button:hover {
+    color: #ffd84a;
+}
+
+button:hover::before {
+    visibility: visible;
+}
+
+/* boss */
+#boss {
+    background: linear-gradient(#8a1f2b, #3d0b12);
+}
+
+/* messages */
+#messages {
+    grid-column: span 4;
+    position: relative;
+    background: #000;
+}
+
+#message {
+    margin: 0;
+    font-size: 22px;
+}
+
